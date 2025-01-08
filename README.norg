@@ -8,7 +8,7 @@ description:
 authors: 
 categories: 
 created: 2025-01-08T11:48:48-0300
-updated: 2025-01-08T12:43:30-0300
+updated: 2025-01-08T12:50:52-0300
 version: 1.1.1
 @end
 
@@ -70,11 +70,12 @@ This is my configuration for `tmux`. I just use the basic features and some plug
 
    set -g status-position top
    set -g status-right-length 100
+   set -ogq @catppuccin_status_connect_separator "no"
    set -g status-left-length 100
    set -g status-left ""
-   set -g status-right "#{E:@catppuccin_status_application}"
-   set -agF status-right "#{E:@catppuccin_status_cpu}"
-   set -ag status-right "#{E:@catppuccin_status_session}"
+   set -ogq @catppuccin_status_right_separator "\ue0b4"
+   set -g status-right "#{E:@catppuccin_status_application} "
+   set -ag status-right "#{E:@catppuccin_status_session} "
    set -ag status-right "#{E:@catppuccin_status_uptime}"
    @end
 

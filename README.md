@@ -73,11 +73,12 @@ set -g @catppuccin_window_status_style "rounded"
 
 set -g status-position top
 set -g status-right-length 100
+set -ogq @catppuccin_status_connect_separator "no"
 set -g status-left-length 100
 set -g status-left ""
-set -g status-right "#{E:@catppuccin_status_application}"
-set -agF status-right "#{E:@catppuccin_status_cpu}"
-set -ag status-right "#{E:@catppuccin_status_session}"
+set -ogq @catppuccin_status_right_separator "\ue0b4"
+set -g status-right "#{E:@catppuccin_status_application} "
+set -ag status-right "#{E:@catppuccin_status_session} "
 set -ag status-right "#{E:@catppuccin_status_uptime}"
 ```
 
