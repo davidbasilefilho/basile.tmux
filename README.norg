@@ -1,0 +1,82 @@
+@document.meta
+title: `tmux` config
+tangle: [
+   ./install.sh
+   ./.tmux.conf
+]
+description: 
+authors: 
+categories: 
+created: 2025-01-08T11:48:48-0300
+updated: 2025-01-08T12:32:14-0300
+version: 1.1.1
+@end
+
+** Depencendies
+   - `tmux`
+   - `tpm`
+   - `stow`
+   - `git`
+
+** Installation
+   Run this command to install the config and `tpm`:
+
+   @code bash
+   git clone https://github.com/davidbasilefilho/tmux ~/tmux
+   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+   cd ~/tmux
+   stow .
+   @end
+
+** Configuration
+   The configuration file is located at `~/.tmux.conf`.
+
+*** Fix terminal colors for Windows Terminal
+    @code tmux
+    set-option -ga terminal-overrides ",xterm-256color:Tc"
+    set -g default-terminal "tmux-256color"
+    @end
+
+*** Basic binds
+    Bind leader, add reload config binding, enable mouse support for resizing panes, and add vim keys for navigating.
+
+   @code tmux
+   set -g prefix2 C-s
+
+   unbind r
+   bind r source-file ~/.tmux.conf
+
+   set -g mouse on
+
+   setw -g mode-keys vi
+   bind-key h select-pane -L
+   bind-key j select-pane -D
+   bind-key k select-pane -U
+   bind-key l select-pane -R
+   bind-key -r C-h select-window -t :-
+   bind-key -r C-l select-window -t :+
+   @end
+
+*** Catppuccin and status bar
+    Install and setup {https://catppuccin.com/}[Catppuccin] and its status bar options.
+
+   @code tmux
+   set -g @plugin 'catppuccin/tmux#v2.1.2'
+   set -g @catppuccin_flavor 'macchiato' # latte, frappe, macchiato or mocha
+   set -g @catppuccin_window_status_style "rounded"
+
+   set -g status-position top
+   set -g status-right-length 100
+   set -g status-left-length 100
+   set -g status-left ""
+   set -g status-right "#{E:@catppuccin_status_application}"
+   set -agF status-right "#{E:@catppuccin_status_cpu}"
+   set -ag status-right "#{E:@catppuccin_status_session}"
+   set -ag status-right "#{E:@catppuccin_status_uptime}"
+   @end
+   
+   @code tmux
+   set -g @plugin 'tmux-plugins/tpm'
+
+   run '~/.tmux/plugins/tpm/tpm'
+   @end
