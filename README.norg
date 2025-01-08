@@ -4,16 +4,16 @@ tangle: [
    ./install.sh
    ./.tmux.conf
 ]
-description: 
-authors: 
-categories: 
+description: My `tmux` configuration file.
+authors: David Basile Filho
+categories: [tmux, config]
 created: 2025-01-08T11:48:48-0300
-updated: 2025-01-08T12:50:52-0300
+updated: 2025-01-08T13:42:31-0300
 version: 1.1.1
 @end
 
 * basile.tmux - `tmux` config
-This is my configuration for `tmux`. I just use the basic features and some plugins to make it more useful and readable. It's still WIP, so I'll update it as I find new features and plugins.
+  This is my configuration for `tmux`. I just use the basic features and some plugins to make it more useful and readable. It's still WIP, so I'll update it as I find new features and plugins.
 
 ** Dependencies
    - `tmux`
@@ -43,46 +43,85 @@ This is my configuration for `tmux`. I just use the basic features and some plug
 *** Basic binds
     Bind leader, add reload config binding, enable mouse support for resizing panes, and add vim keys for navigating.
 
-   @code tmux
-   set -g prefix2 C-s
+    @code tmux
+    set -g prefix2 C-s
 
-   unbind r
-   bind r source-file ~/.tmux.conf
+    unbind r
+    bind r source-file ~/.tmux.conf
 
-   set -g mouse on
+    set-option -g base-index 1 # start window from 1
 
-   setw -g mode-keys vi
-   bind-key h select-pane -L
-   bind-key j select-pane -D
-   bind-key k select-pane -U
-   bind-key l select-pane -R
-   bind-key -r C-h select-window -t :-
-   bind-key -r C-l select-window -t :+
-   @end
+    set -g mouse on
+
+    setw -g mode-keys vi
+
+    bind-key -n M-K swap-pane -U
+    bind-key -n M-J swap-pane -D
+
+    bind-key -n M-h resize-pane -L 5
+    bind-key -n M-j resize-pane -D 5
+    bind-key -n M-k resize-pane -U 5
+    bind-key -n M-l resize-pane -R 5
+
+    unbind %
+    unbind '"'
+    unbind p
+
+    bind-key p switch-client -T p-table
+    bind-key -T p-table v split-window -h
+    bind-key -T p-table h split-window -v
+    bind-key -T p-table l list-sessions
+
+    unbind w
+    bind w switch-client -T w-table
+    bind-key -T w-table n new-window
+    bind-key -T w-table l list-windows
+    bind-key -T w-table r command-prompt "rename-window '%%'"
+    @end
+
+*** `vim-tmux-navigator`
+    Seemlessly navigate between vim and tmux!
+
+    @code tmux
+    set -g @plugin 'christoomey/vim-tmux-navigator'
+    @end
 
 *** Catppuccin and status bar
     Install and setup {https://catppuccin.com/}[Catppuccin] and its status bar options.
 
-   @code tmux
-   set -g @plugin 'catppuccin/tmux#v2.1.2'
-   set -g @catppuccin_flavor 'macchiato' # latte, frappe, macchiato or mocha
-   set -g @catppuccin_window_status_style "rounded"
+    @code tmux
+    set -g @plugin 'catppuccin/tmux#v2.1.2'
+    set -g @catppuccin_flavor 'macchiato' # latte, frappe, macchiato or mocha
+    set -g @catppuccin_window_status_style "rounded"
 
-   set -g status-position top
-   set -g status-right-length 100
-   set -ogq @catppuccin_status_connect_separator "no"
-   set -g status-left-length 100
-   set -g status-left ""
-   set -ogq @catppuccin_status_right_separator "\ue0b4"
-   set -g status-right "#{E:@catppuccin_status_application} "
-   set -ag status-right "#{E:@catppuccin_status_session} "
-   set -ag status-right "#{E:@catppuccin_status_uptime}"
-   @end
+    set -g status-position top
+    set -g status-right-length 100
+    set -ogq @catppuccin_status_connect_separator "no"
+    set -g status-left-length 100
+    set -g status-left ""
+    set -ogq @catppuccin_status_right_separator "\ue0b4"
+
+    set -g status-right "#{E:@catppuccin_status_application} "
+    set -ag status-right "#{E:@catppuccin_status_session} "
+    set -ag status-right "#{E:@catppuccin_status_uptime}"
+    @end
+
+*** `tmux-sensible`
+    A set of options that make tmux more pleasant to use.
+    @code tmux
+    set -g @plugin 'tmux-plugins/tmux-sensible'
+    @end
+
+*** `tmux-resurrect`
+    Save and restore tmux environment.
+    @code tmux
+    set -g @plugin 'tmux-plugins/tmux-resurrect'
+    @end
 
 *** Setup `tpm`
     Add the `tpm` plugin manager to the config.
-   
-   @code tmux
-   set -g @plugin 'tmux-plugins/tpm'
-   run '~/.tmux/plugins/tpm/tpm'
-   @end
+
+    @code tmux
+    set -g @plugin 'tmux-plugins/tpm'
+    run '~/.tmux/plugins/tpm/tpm'
+    @end
