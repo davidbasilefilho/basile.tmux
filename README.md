@@ -2,7 +2,7 @@
 
 
 
-## Depencendies
+## Dependencies
 
 - `tmux`
 - `tpm`

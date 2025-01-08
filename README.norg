@@ -8,11 +8,11 @@ description:
 authors: 
 categories: 
 created: 2025-01-08T11:48:48-0300
-updated: 2025-01-08T12:32:14-0300
+updated: 2025-01-08T12:33:29-0300
 version: 1.1.1
 @end
 
-** Depencendies
+** Dependencies
    - `tmux`
    - `tpm`
    - `stow`
