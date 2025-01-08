@@ -125,6 +125,8 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 Save and restore tmux environment.
 ```tmux
 set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @resurrect-strategy-nvim 'session'
+set -g @resurrect-capture-pane-contents 'on'
 ```
 
 

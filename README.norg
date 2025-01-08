@@ -116,6 +116,8 @@ version: 1.1.1
     Save and restore tmux environment.
     @code tmux
     set -g @plugin 'tmux-plugins/tmux-resurrect'
+    set -g @resurrect-strategy-nvim 'session'
+    set -g @resurrect-capture-pane-contents 'on'
     @end
 
 *** Setup `tpm`
