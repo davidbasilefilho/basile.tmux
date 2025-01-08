@@ -88,6 +88,5 @@ Add the `tpm` plugin manager to the config.
 
 ```tmux
 set -g @plugin 'tmux-plugins/tpm'
-
 run '~/.tmux/plugins/tpm/tpm'
 ```
