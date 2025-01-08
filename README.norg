@@ -8,9 +8,12 @@ description:
 authors: 
 categories: 
 created: 2025-01-08T11:48:48-0300
-updated: 2025-01-08T12:33:29-0300
+updated: 2025-01-08T12:38:15-0300
 version: 1.1.1
 @end
+
+* basile.tmux - `tmux` config
+This is my configuration for `tmux`. I just use the basic features and some plugins to make it more useful and readable. It's is WIP, so I'll update it as I find new features and plugins.
 
 ** Dependencies
    - `tmux`

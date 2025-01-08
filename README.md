@@ -2,6 +2,11 @@
 
 
 
+# basile.tmux - `tmux` config
+
+This is my configuration for `tmux`. I just use the basic features and some plugins to make it more useful and readable. It's is WIP, so I'll update it as I find new features and plugins.
+
+
 ## Dependencies
 
 - `tmux`
