@@ -20,7 +20,7 @@ This is my configuration for `tmux`. I just use the basic features and some plug
 Run this command to install the config and `tpm`:
 
 ```bash
-git clone https://github.com/davidbasilefilho/tmux ~/tmux
+git clone https://github.com/davidbasilefilho/basile.tmux.git ~/tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 cd ~/tmux
 stow .
