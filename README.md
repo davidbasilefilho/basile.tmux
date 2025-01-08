@@ -81,6 +81,11 @@ set -ag status-right "#{E:@catppuccin_status_session}"
 set -ag status-right "#{E:@catppuccin_status_uptime}"
 ```
 
+
+### Setup `tpm`
+
+Add the `tpm` plugin manager to the config.
+
 ```tmux
 set -g @plugin 'tmux-plugins/tpm'
 
