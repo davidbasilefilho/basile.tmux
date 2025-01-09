@@ -45,7 +45,7 @@ set -g default-terminal "tmux-256color"
 Bind leader, add reload config binding, enable mouse support for resizing panes, and add vim keys for navigating.
 
 ```tmux
-set -g prefix2 C-s
+set -g prefix C-s
 
 unbind r
 bind r source-file ~/.tmux.conf
@@ -59,10 +59,10 @@ setw -g mode-keys vi
 bind-key -n M-K swap-pane -U
 bind-key -n M-J swap-pane -D
 
-bind-key -n M-h resize-pane -L 5
-bind-key -n M-j resize-pane -D 5
-bind-key -n M-k resize-pane -U 5
-bind-key -n M-l resize-pane -R 5
+bind-key -n M-h resize-pane -L 4
+bind-key -n M-j resize-pane -D 2
+bind-key -n M-k resize-pane -U 2
+bind-key -n M-l resize-pane -R 4
 
 unbind %
 unbind '"'
@@ -78,6 +78,15 @@ bind w switch-client -T w-table
 bind-key -T w-table n new-window
 bind-key -T w-table l list-windows
 bind-key -T w-table r command-prompt "rename-window '%%'"
+bind-key -T w-table b break-pane
+bind-key -T w-table c confirm-before kill-window
+bind-key -T w-table > rotate-window
+bind-key -T w-table < rotate-window -D
+
+unbind j
+bind j switch-client -T j-table
+bind-key -T j-table h command-prompt -p "Join pane from window horizontally:" "join-pane -s '%%'"
+bind-key -T j-table v command-prompt -p "Join pane from window vertically:" "join-pane -s '%%'"
 ```
 
 
@@ -103,11 +112,10 @@ set -g status-position top
 set -g status-right-length 100
 set -ogq @catppuccin_status_connect_separator "no"
 set -g status-left-length 100
-set -g status-left ""
+set -g status-left "#{E:@catppuccin_status_application} "
 set -ogq @catppuccin_status_right_separator "\ue0b4"
 
-set -g status-right "#{E:@catppuccin_status_application} "
-set -ag status-right "#{E:@catppuccin_status_session} "
+set -g status-right "#{E:@catppuccin_status_session} "
 set -ag status-right "#{E:@catppuccin_status_uptime}"
 ```
 
