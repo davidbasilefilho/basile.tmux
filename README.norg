@@ -23,7 +23,9 @@ version: 1.1.1
 ** Installation
    Run this command to install the config and `tpm`:
 
+   #tangle install.sh
    @code bash
+   #!/bin/bash
    git clone https://github.com/davidbasilefilho/basile.tmux.git ~/tmux
    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
    cd ~/tmux
