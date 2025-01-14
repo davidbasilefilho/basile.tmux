@@ -1,13 +1,16 @@
 @document.meta
-title: `tmux` config
-tangle: [
-   ./.tmux.conf
-]
-description: My `tmux` configuration file.
+title: basile.tmux
+description: My tmux config!
 authors: David Basile Filho
-categories: [tmux, config]
-created: 2025-01-08T11:48:48-0300
-updated: 2025-01-08T13:42:31-0300
+tangle: [
+  ./.tmux.conf
+]
+categories: [
+  tmux
+  config
+]
+created: 2025-01-14T15:30:58-0300
+updated: 2025-01-14T15:31:43-0300
 version: 1.1.1
 @end
 
