@@ -70,14 +70,15 @@ unbind '"'
 unbind p
 
 bind-key p switch-client -T p-table
-bind-key -T p-table v split-window -h
-bind-key -T p-table h split-window -v
+bind-key -T p-table v split-window -h -c "#{pane_current_path}"
+bind-key -T p-table h split-window -v -c "#{pane_current_path}"
 bind-key -T p-table l list-sessions
 
 unbind w
 bind w switch-client -T w-table
 bind-key -T w-table n new-window
 bind-key -T w-table l list-windows
+bind-key -T w-table g new-window -c "#{pane_current_path}" "lazygit"
 bind-key -T w-table r command-prompt "rename-window '%%'"
 bind-key -T w-table b break-pane
 bind-key -T w-table c confirm-before kill-window
